@@ -15,8 +15,6 @@ RUN composer install && \
             php artisan key:generate && \
             php artisan config:cache
 
-RUN ln -s public html
-
 EXPOSE 9000
 
 ENTRYPOINT ["php-fpm"]
