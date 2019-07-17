@@ -5,12 +5,14 @@ services:
     app:
         build: .
         container_name: app
-        entrypoint : dockerize -template ./.docker/app/.env_docker:.env -wait tcp://db:3306 -timeout 60s ./.docker/entrypoint.sh
+        entrypoint : dockerize -template ./.docker/app/.env_docker:.env -template ./.docker/app/nginx.conf:./.docker/nginx/nginx.conf -wait tcp://db:3306 -timeout 60s ./.docker/entrypoint.sh
         environment : 
             - DB_HOST=db
             - DB_DATABASE=laravel
             - DB_USERNAME=root
             - DB_PASSWORD=root
+            - NGINX_HOST=app
+            - NGINX_PORT=9000
         volumes:
             - .:/var/www
         networks:
