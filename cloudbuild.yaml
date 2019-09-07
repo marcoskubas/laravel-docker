@@ -16,11 +16,11 @@ steps:
   name : 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','app','cp','.env.example','.env']
 
- - id: "Rodando Key Generate"
+- id: "Rodando Key Generate"
   name : 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','app','php','/var/www/artisan','key:generate']
 
- - id: "Rodando Migrations"
+- id: "Rodando Migrations"
   name : 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','app','php','/var/www/artisan','migrate']
 
