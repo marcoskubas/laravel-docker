@@ -1,4 +1,21 @@
 
+## CONTINUOS DEPLOYMENT
+
+```
+kubectl create secret generic mysql-pass-dl --from-literal=password='yourpass'
+kubectl apply -f k8s/mysql/
+kubectl apply -f k8s/redis/
+kubectl apply -f k8s/nginx/
+kubectl get pods
+kubectl apply -f k8s/app/
+```
+
+## Configurando Cloudbuild
+
+```
+
+```
+
 ## Processo de CI - 11/09/2019
 
 Nessa fase, você deverá repetir o processo ensinado no módulo.
