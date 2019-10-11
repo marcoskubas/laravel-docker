@@ -13,7 +13,36 @@ kubectl apply -f k8s/app/
 ## Configurando Cloudbuild
 
 ```
+kubectl get pods
+kubectl exec -it nginx-849cbbbc96-tsrvx apk update
+kubectl exec -it nginx-849cbbbc96-tsrvx apk add bash
+kubectl exec -it nginx-849cbbbc96-tsrvx bash
+cat /etc/nginx/conf.d/nginx.conf
+cd /usr/share/nginx/html
+touch index.php
+exit
+kubectl apply -f k8s/nginx/
+```
 
+## Retoques Finais
+
+```
+kubectl get pods
+kubectl exec -it app-5b947b6d54-xbsqk apk update
+kubectl exec -it app-5b947b6d54-xbsqk apk add bash
+kubectl exec -it app-5b947b6d54-xbsqk bash
+ln -s /var/www/ /usr/share/nginx
+cat .env
+php artisan migrate
+ping mysql-service
+php artisan config:cache
+mysql -uroot -hmysql-service -p
+yourpass
+create database laravel;
+exit
+php artisan migrate
+exit
+chmod +x k8s/entrypoint.sh
 ```
 
 ## Processo de CI - 11/09/2019
